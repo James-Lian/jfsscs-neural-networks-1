@@ -14,7 +14,7 @@ X_train = X_train / 255
 X_test = X_test / 255
 
 y_train = to_categorical(y_train)
-y_test = to_categorial(y_test)
+y_test = to_categorical(y_test)
 num_classes = y_test.shape[1]
 
 def baseline_model():
@@ -26,5 +26,5 @@ def baseline_model():
 
 model = baseline_model()
 model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200, verbose=2)
-scores = modelevaluate(X_test, y_test, verbose=0)
-print("Baseline Error: " + (100-scores[1]*100))
+scores = model.evaluate(X_test, y_test, verbose=0)
+print("Baseline Error: " + str(100-scores[1]*100))
